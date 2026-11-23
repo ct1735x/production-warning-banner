@@ -17,4 +17,6 @@ function handleTabUpdate(tabId, changeInfo) {
   ).catch(() => {});
 }
 
-api.tabs.onUpdated.addListener(handleTabUpdate, { properties: ['url'] });
+// No event filter: Chrome rejects filters on tabs.onUpdated, and
+// handleTabUpdate already ignores updates without a URL change.
+api.tabs.onUpdated.addListener(handleTabUpdate);
