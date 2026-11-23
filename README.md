@@ -2,6 +2,10 @@
 
 A lightweight browser extension that displays a configurable warning banner on your production environments — so you never accidentally edit, delete, or submit something on prod when you meant to work on staging.
 
+## Get in on Firefox
+
+--> https://addons.mozilla.org/en-US/firefox/addon/production-warning-banner/
+
 ## What it does
 
 When you visit a URL that matches your configured list, a colored banner is injected into the page. The banner:
