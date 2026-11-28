@@ -40,8 +40,10 @@ admin.internal.io
 
 | Browser | Support |
 |---|---|
-| Firefox | ✅ (Manifest V2, WebExtensions API) |
-| Chrome / Edge / Brave | ✅ (chrome.* API fallback) |
+| Firefox 121+ | ✅ (Manifest V3, background script) |
+| Chrome / Edge / Brave / Helium | ✅ (Manifest V3, service worker, chrome.* API fallback) |
+
+A single `manifest.json` serves both engines: Chromium uses `background.service_worker`, Firefox uses `background.scripts`.
 
 ## Local development
 
@@ -81,7 +83,7 @@ Same command — the Chrome Web Store also accepts a `.zip` of the unpacked exte
 
 ```
 ae-prod-warning/
-├── manifest.json   # Extension manifest (MV2)
+├── manifest.json   # Extension manifest (MV3)
 ├── content.js      # Injected into every page — renders the banner
 ├── options.html    # Settings page UI
 ├── options.js      # Settings page logic
@@ -95,5 +97,6 @@ ae-prod-warning/
 | Permission | Reason |
 |---|---|
 | `storage` | Saves your URL list, position, color, and banner text via sync storage |
+| `<all_urls>` (host) | Lets the content script check every page against your URL list and inject the banner |
 
 No network requests. No data collection. Settings stay in your browser.

@@ -1,23 +1,25 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Production Warning Banner",
-  "version": "2.2",
+  "version": "3.0",
   "description": "Displays a configurable banner on your production environments",
   "browser_specific_settings": {
     "gecko": {
       "id": "prod-warning@ct1735x.fr",
+      "strict_min_version": "121.0",
       "data_collection_permissions": {
         "required": ["none"],
         "optional": []
       }
     }
   },
-  "permissions": ["storage", "<all_urls>"],
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
   },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_title": "Production Warning"
   },
